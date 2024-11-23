@@ -44,11 +44,11 @@ function saveState() {
 
 // Update UI text based on language
 function updateUI() {
-    resetBtn.textContent = translations[state.language].reset;
-    darkModeBtn.textContent = translations[state.language].darkMode;
-    languageBtn.textContent = translations[state.language].language;
-    clickCounter.textContent = `${translations[state.language].clicks}${state.clicks}`;
-    missCounter.textContent = `${translations[state.language].misses}${state.misses}`;
+    resetBtn.textContent = '🔄'; // Reset icon
+    darkModeBtn.textContent = state.darkMode ? '☀️' : '🌙';
+    languageBtn.textContent = state.language === 'en' ? '🇬🇧' : '🇮🇹';
+    clickCounter.textContent = `🧀 ${state.clicks}`;
+    missCounter.textContent = `❌ ${state.misses}`;
 }
 
 // Update cheese image based on clicks
@@ -110,7 +110,13 @@ function handleCheeseClick(e) {
 }
 
 // Handle miss click
-function handleMissClick() {
+function handleMissClick(e) {
+    // Don't count as miss if clicking UI elements
+    if (e.target.closest('.ui-controls') || e.target.closest('.stats') || 
+        e.target.closest('.modal-overlay')) {
+        return;
+    }
+    
     state.misses++;
     showMissMessage();
     updateUI();
@@ -135,11 +141,11 @@ function createModal(message, scale = 1) {
     
     const cancelBtn = document.createElement('button');
     cancelBtn.className = 'modal-btn cancel';
-    cancelBtn.textContent = state.language === 'en' ? 'No' : 'No';
+    cancelBtn.textContent = '❌'; // No icon
     
     const confirmBtn = document.createElement('button');
     confirmBtn.className = 'modal-btn confirm';
-    confirmBtn.textContent = state.language === 'en' ? 'Yes' : 'Sì';
+    confirmBtn.textContent = '✔️'; // Yes icon
     
     buttons.appendChild(cancelBtn);
     buttons.appendChild(confirmBtn);
