@@ -1,0 +1,216 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #2c3e50;
+    --ui-bg: rgba(255, 255, 255, 0.9);
+    --ui-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --btn-hover: #f8f9fa;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    overflow: hidden;
+}
+
+.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --ui-bg: rgba(45, 45, 45, 0.9);
+    --ui-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    --btn-hover: #363636;
+}
+
+.game-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cheese-container {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.1s;
+    z-index: 1;
+}
+
+#cheese {
+    width: 200px;
+    height: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition: transform 0.1s;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.cheese-clicked {
+    transform: scale(1.1);
+}
+
+.ui-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    padding: 10px 20px;
+    background: var(--ui-bg);
+    border-radius: 15px;
+    box-shadow: var(--ui-shadow);
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-1px);
+}
+
+.stats {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 18px;
+    padding: 15px 25px;
+    background: var(--ui-bg);
+    border-radius: 15px;
+    box-shadow: var(--ui-shadow);
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+.miss-message {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: center;
+    background: var(--ui-bg);
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: var(--ui-shadow);
+    backdrop-filter: blur(10px);
+    z-index: 3;
+}
+
+.click-message {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    font-weight: bold;
+    animation: fadeUp 0.5s forwards;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+#languageBtn {
+    font-size: 24px;
+    padding: 5px 10px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background: var(--ui-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--ui-shadow);
+    text-align: center;
+    transition: all 0.3s;
+    transform: scale(0.9);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.modal-btn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+}
+
+.modal-btn.cancel {
+    background: var(--btn-hover);
+    color: var(--text-color);
+}
+
+.modal-btn.confirm {
+    background: #ff4444;
+    color: white;
+}
+
+.modal-btn.confirm:hover {
+    background: #ff6666;
+}
+
+.modal-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+} 

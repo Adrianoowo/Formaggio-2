@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Cheese Click</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="ui-controls">
+            <button id="resetBtn" class="btn"></button>
+            <button id="darkModeBtn" class="btn">🌙</button>
+            <button id="languageBtn" class="btn">🇬🇧</button>
+        </div>
+        
+        <div class="stats">
+            <div id="clickCounter"></div>
+            <div id="missCounter"></div>
+        </div>
+
+        <div id="missMessage" class="miss-message"></div>
+        
+        <div class="cheese-container">
+            <img id="cheese" src="https://listonic.com/phimageproxy/listonic/products/cheddar_cheese.webp" alt="Cheese">
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="messages.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 
